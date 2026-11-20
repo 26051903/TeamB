@@ -4,6 +4,8 @@
 class UI : public Base {
 private:
 	CFont* m_font;
+	CImage m_img_orenge;
+	CImage m_img_fruit;
 
 public:
 	UI();

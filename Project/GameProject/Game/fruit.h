@@ -4,10 +4,10 @@
 class Fruit :public Base {
 private:
 	CImage m_img;
-	CImage m_rope_img;
+	CImage m_rope_img;	
+	int m_order;
 	bool m_is_falling;	//—Ž‰º’†‚©‚Ç‚¤‚©
 	bool m_is_ground;	//’n–Ê‚É’…’n‚µ‚½‚©‚Ç‚¤‚©
-	int m_order;
 
 public:
 	  Fruit(const char* name,const CVector2D& pos, int order);

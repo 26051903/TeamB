@@ -9,16 +9,17 @@ Player::Player(const CVector2D& pos) :Base(eType_Player) {
 	m_rect = CRect(-64, -128, 64, 0);
 	m_pos = pos;								//出現座標を設定
 	m_flip = false;
-	m_next_order = 1;
+	m_last_fruit = 0;
 }
 
 void Player::Update() {
 	const float move_speed = 4.0f;				//移動速度
 
 	Fruit* target = nullptr;
+	//地面に落ちているフルーツならどれでも歩いて食べる	
 	for (Base* b : Base::FindObjects(eType_Item)) {
 		if (Fruit* f = dynamic_cast<Fruit*>(b)) {
-			if (f->IsGround() && f->GetOrder() == m_next_order) {
+			if (f->IsGround()) {
 				target = f;
 				break;
 			}
@@ -46,10 +47,22 @@ void Player::Collision(Base* b) {
 	switch (b->GetType()) {
 	case eType_Item:
 		if(Fruit* f = dynamic_cast<Fruit*>(b)) {
-			if (f->IsGround() && f->GetOrder() == m_next_order && Base::CollisionRect(this, b)) {
+			if (f->IsGround() && Base::CollisionRect(this, b)) {
 				f->SetKill();
-				m_next_order++;
 				GameDate::s_score += 100;	//ポイントの加点
+				//ブドウ（order = 1）を食べた場合
+				if (f->GetOrder() == 1) {
+					GameDate::s_got_fruit = true;
+					m_last_fruit = 1;
+				}
+				//ミカン（order = 2）を食べた場合
+				else if (f->GetOrder() == 2) {
+					GameDate::s_got_orenge = true;
+					if (m_last_fruit == 1) {
+						GameDate::s_score += 100;
+					}
+					m_last_fruit = 2;
+				}
 			}
 		}
 		break;

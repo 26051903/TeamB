@@ -10,9 +10,9 @@ Fruit::Fruit(const char* name, const CVector2D& pos, int order) : Base(eType_Ite
 	m_rope_img = COPY_RESOURCE("Rope", CImage);
 	m_rope_img.SetCenter(0, 0);
 	m_pos = pos; // À•W‚ğİ’è
+	m_order = order;
 	m_is_falling = false;
 	m_is_ground = false;
-	m_order = order;
 }
 
 
