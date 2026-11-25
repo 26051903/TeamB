@@ -92,8 +92,10 @@ void Init(void)
 	ADD_RESOURCE("BackGround", CImage::CreateImage("Image/Field/BackGround.png"));
 	ADD_RESOURCE("fruit", CImage::CreateImage("Image/fruit/fruit.png"));
 	ADD_RESOURCE("orenge", CImage::CreateImage("Image/fruit/orenge.png"));
+	ADD_RESOURCE("clear", CImage::CreateImage("Image/StageClear/clear.png"));
 	ADD_RESOURCE("Rope", CImage::CreateImage("Image/fruit/Rope.png"));
 	ADD_RESOURCE("Player", CImage::CreateImage("Image/Player/Player.png"));
+	ADD_RESOURCE("Score", CImage::CreateImage("Image/StageClear/Score.png"));
 	ADD_RESOURCE("Title", CImage::CreateImage("Image/Title/Title.png"));
 	ADD_RESOURCE("ScoreFont", CFont::CreateInstance("ScoreFont", "C:\\\\Windows\\\\Fonts\\\\msgothic.ttc", 96));
 	new Title();
