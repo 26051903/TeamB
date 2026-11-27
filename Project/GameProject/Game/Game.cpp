@@ -6,6 +6,7 @@
 #include "GameDate.h"
 
 Game::Game() :Base(eType_Scene) {
+	GameDate::s_score = 0;
 	GameDate::s_got_orenge = false;
 	GameDate::s_got_fruit = false;
 	new Field();

@@ -1,13 +1,19 @@
 #include "Field.h"
 
-Field::Field() : Base(eType_Field) {
-    m_img = COPY_RESOURCE("BackGround", CImage);
-    m_foreground = COPY_RESOURCE("ground", CImage);
-
+Field::Field(int stage_no) : Base(eType_Field) {
+    if (stage_no == 1) {
+        m_img = COPY_RESOURCE("BackGround", CImage);
+        m_foreground = COPY_RESOURCE("ground", CImage);
+        m_ground_y = 920;
+    }
+    else if (stage_no == 2) {
+        m_img = CPOY_RESOURCE("BackGaroud2"CImage);
+        m_foreground = COPY_RESOUCE("ground2", CImage);
+        m_ground_y = 920.0f;
+    }
     m_img.SetSize(1920, 1080);
     m_foreground.SetSize(1920, 185);
 
-    m_ground_y = 920;
 }
 
 void Field::Draw() {

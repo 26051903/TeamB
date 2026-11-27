@@ -11,5 +11,6 @@ private:
 
 public:
 	UI();
+	void Update() override;
 	void Draw() override;
 };
